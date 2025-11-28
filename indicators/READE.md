@@ -1,15 +1,11 @@
 __________________________________________________________________________________
 app.post('/api/getIndications', (req, res) => {
     let { mozar, mas } = req.body;
-    mozar = normalize(mozar);
-    mas   = normalize(mas);
-
-    console.log(mozar, mas);
 
     try {
         const filePath = path.join(__dirname, "json", "dataIndicators.json");
         let data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-        data = data.filter(item => normalize(item.mozar) === mozar && normalize(item.maslul) === mas);
+        data = data.filter(item => item.mozar === mozar && item.maslul === mas);
         res.json(data);
     } catch (err) {
         res.status(500).json({ error: "Failed to load file", details: err.message });
