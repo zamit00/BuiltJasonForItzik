@@ -90,7 +90,8 @@ async function fetchkupotKlaliB() {
       const mhkupa = row.getElementsByTagName("ID_GUF")[0]?.textContent || '';
 
       const mas = getMaslulType(shemkupa, "", mozar) || '';
-      const masOfi = await maslulOfi(mas);
+      const masOfi = maslulimData[mas]?.desc || "";
+      const ramatsikon = maslulimData[mas]?.sikon || "";
 
       const yitratnehasim = row.getElementsByTagName("YIT_NCHASIM_BFOAL")[0]?.textContent || 0;
       const tesuam = Number(row.getElementsByTagName("TSUA_MITZ_LE_TKUFA")[0]?.textContent || 0);
@@ -117,6 +118,7 @@ async function fetchkupotKlaliB() {
           shemkupa,
           mas,
           masOfi,
+          ramatsikon,
           mozar,
           tesuam,
           yitra: yitratnehasim,
