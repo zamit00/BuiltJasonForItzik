@@ -50,7 +50,8 @@ async function fetchkupotKlaliP() {
       const mozar = row.getElementsByTagName("SUG_KRN")[0]?.textContent || '';
       const shemkupa = row.getElementsByTagName("SHM_KRN")[0]?.textContent || '';
       const mas = getMaslulType(shemkupa, "", mozar) || '';
-
+      const masOfi = maslulimData[mas]?.desc || "";
+      const ramatsikon = maslulimData[mas]?.sikon || "";
       const yitratnehasim = row.getElementsByTagName("YITRAT_NCHASIM_LSOF_TKUFA")[0]?.textContent || '';
       const divuach = row.getElementsByTagName("MATZAV_DIVUACH")[0]?.textContent || '';
       const mhkupa = row.getElementsByTagName("ID")[0]?.textContent || '';
@@ -88,7 +89,8 @@ async function fetchkupotKlaliP() {
           mh: mhkupa,
           shemkupa,
           mas,
-          masOfi: await maslulOfi(mas),
+          masOfi,
+          ramatsikon,
           mozar,
           tesuam,
           yitra: yitratnehasim,
