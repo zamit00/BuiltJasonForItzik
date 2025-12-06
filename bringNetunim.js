@@ -367,7 +367,7 @@ async function makejason() {
 }
 
           
-    function getMaslulType(shemkupa,mishni,moz) {
+function getMaslulType(shemkupa,mishni,moz) {
         if (!shemkupa) return 'לא ידוע';           
         const name = String(shemkupa).trim();
 
@@ -405,7 +405,8 @@ async function makejason() {
         }
         
         // אשראי ואג"ח עם מניות (עם 25)
-        if ((name.includes('אשראי') || (name.includes('אג"ח') || name.includes('אגח')) ||name.includes('אגח')) && name.includes('25')) {
+        if ((name.includes('אשראי') || (name.includes('אג"ח') || name.includes('אגח')) ||name.includes('אגח')) && name.includes('25')
+        && !name.includes('סחיר') && !name.includes('עוקב')) {
             return 'אשראי ואג"ח עם מניות';
         }
         
