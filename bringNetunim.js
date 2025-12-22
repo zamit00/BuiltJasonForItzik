@@ -481,7 +481,20 @@ function getMaslulType(shemkupa,mishni,moz) {
             name.includes('עוקב')) {
             return 'עוקב מדדי אג"ח עם מניות';
         }
-        
+        if (name.includes('יעד לפרישה')) {
+            let hasNumber = name.match(/\d+(\.\d+)?/g);
+            if (hasNumber) {
+                const currentYear = new Date().getFullYear();
+                
+                hasNumber = 67-hasNumber+currentYear;
+                if (hasNumber <= 50) {
+                    return 'עד 50';
+                } else if (hasNumber >= 60) {
+                    return '60 ומעלה';
+                } else {
+                     return '50-60';}
+            }
+        }
         // 50-60 (כולל ווריאציות: "לבני 50 עד 60", "בני 50-60", "50 עד 60")
         if ((name.includes('50') && name.includes('60')) || 
             name.includes('50-60')) {
